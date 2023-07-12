@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+      <form (ngSubmit)="onSubmit()" #register="ngForm">
+          <div>
+              <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="user.email" required>
+              </mat-form-field>
+          </div>
+          <div>
+              <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" placeholder="password" name="password" [(ngModel)]="user.password" required>
+              </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" [disabled]="register.form.invalid">Register</button>
+      </form>
+      <p *ngIf="feedback">{{feedback}}</p>
+
+  </mat-card-content>
+  <!-- <mat-card-actions align="end">
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+  </mat-card-actions> -->
+</mat-card>
