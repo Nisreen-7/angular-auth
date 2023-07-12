@@ -14,4 +14,8 @@ export class AuthService {
     return this.http.post<User>(environment.serverUrl+'/api/user', user)
 
   }
+  login(user: User) {
+    return this.http.post<User>(environment.serverUrl+'/api/login', user)
+
+  }
 }

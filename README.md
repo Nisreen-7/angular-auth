@@ -36,4 +36,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 	
 3. Faire que si la requête de register ne fonctionne pas, on affiche une erreur dans le formulaire (chercher comment gérer les erreurs avec les subscribe d'angular)
 	
-4. Rajouter une prorpiété repeatPassword liée à un form field dans le template et faire que au submit, si le repeat ne correspond pas au user.password alors on l'indique dans le feedback (et on fait pas la requête). Bonus : essayer de le faire cette vérification en temps réel quand on tape dans l'input
+4. Rajouter une prorpiété repeatPassword liée à un form field dans le template et faire que au submit, si le repeat ne correspond pas au user.password alors on l'indique dans le feedback (et on fait pas la requête). Bonus : essayer de le faire cette vérification en temps réel quand on tape dans l'input.
+
+
+# Formulaire de login/register
+1. Dans le RegisterComponent, rajouter une propriété isLogin initialisée à false
+	
+2. Dans le template, en se basant uniquement sur cette propriété isLogin, faire en sorte de modifier l'affichage pour faire que dans le cas où isLogin alors on affiche le titre "Login", on affiche pas le champ repeatPassword et on fait que le bouton register passe isLogin à false. Dans le cas où isLogin est false, on affiche le title Register, le champ repeatPassword et on fait que au click sur login ça passe isLogin à true
+	
+3. On rajoute dans notre AuthService une méthode login qui va être (pour l'instant) un copié-collé de la méthode register, mais pas sur la même route
+	
+4. Dans le RegisterComponent, dans le onSubmit, on fait en sorte d'appeler un login ou un register selon la valeur de isLogin
