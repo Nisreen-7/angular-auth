@@ -10,23 +10,28 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent {
 
   user: User = { email: '', password: '' };
-repeat='';
+  repeat = '';
   constructor(private authservice: AuthService) { }
-  isLogin=true;
+  isLogin = true;
   feedback = '';
 
   onSubmit() {
     if (!this.isLogin) {
       this.authservice.addUser(this.user)
-      .subscribe(() => this.feedback = 'registration complete.');
+        .subscribe({
+          complete: () => this.feedback = 'registration complete.',
+          error: () => this.feedback = 'User already exists'
+        });
+    } else {
+
     }
-
     this.authservice.login(this.user)
-      .subscribe(() => this.feedback = 'Login complete .');
-
-
+      .subscribe({
+        complete: () => this.feedback = 'Login successful',
+        error: () => this.feedback = 'credential errore'
+      });
   }
 
 
-
 }
+

@@ -7,12 +7,11 @@ import { AuthService } from '../auth.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  list: User[] = [];
+export class HomeComponent  {
+  constructor(public authService:AuthService){}
 
-  constructor(private service: AuthService) { }
-
-  ngOnInit(): void {
-   }
+  checkIfLogged() {
+    this.authService.getUser().subscribe(data => console.log(data));
+  }
 
 }

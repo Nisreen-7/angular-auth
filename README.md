@@ -47,3 +47,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 3. On rajoute dans notre AuthService une méthode login qui va être (pour l'instant) un copié-collé de la méthode register, mais pas sur la même route
 	
 4. Dans le RegisterComponent, dans le onSubmit, on fait en sorte d'appeler un login ou un register selon la valeur de isLogin
+
+# La Navbar et la page qui liste les users
+1. Générer un component NavigationComponent, dedans faire une Toolbar angular-material
+	
+2. En utilisant le authService comme dans l'exemple du HomeComponent, faire en sorte d'afficher un bouton logout dans la toolbar si on est connecté, sinon on affiche un lien vers la page register
+	
+3. Générer un component ListUserComponent, l'associer à une route '/list-user'
+	
+4. Rajouter un lien vers list-user dans la toolbar et ne l'afficher que si l'on est connecté
+	
+5. Dans ce ListUserComponent, faire un appel à /api/user en get et faire une boucle sur le résultat pour afficher la liste des users
