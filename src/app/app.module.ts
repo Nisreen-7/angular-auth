@@ -13,14 +13,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AuthInterceptor } from './auth.interceptor';
-
+import { NavigationComponent } from './navigation/navigation.component';
+import {MatTableModule} from '@angular/material/table';
+import { ListUserComponent } from './list-user/list-user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavigationComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +36,8 @@ import { AuthInterceptor } from './auth.interceptor';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

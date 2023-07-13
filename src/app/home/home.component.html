@@ -3,3 +3,5 @@
 <button (click)="checkIfLogged()">Check if logged</button>
 
 <button *ngIf="authService.logged" (click)="authService.logout()">Bloublou</button>
+
+{{authService.logged|json}}

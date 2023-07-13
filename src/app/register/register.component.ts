@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../entities';
 import { AuthService } from '../auth.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -9,29 +10,26 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent {
 
-  user: User = { email: '', password: '' };
+  user:User = {email:'', password:''};
   repeat = '';
-  constructor(private authservice: AuthService) { }
-  isLogin = true;
   feedback = '';
+  isLogin = false;
+  constructor(private authService:AuthService, private location:Location){}
 
   onSubmit() {
-    if (!this.isLogin) {
-      this.authservice.addUser(this.user)
-        .subscribe({
-          complete: () => this.feedback = 'registration complete.',
-          error: () => this.feedback = 'User already exists'
-        });
-    } else {
+    if(!this.isLogin) {
 
-    }
-    this.authservice.login(this.user)
-      .subscribe({
-        complete: () => this.feedback = 'Login successful',
-        error: () => this.feedback = 'credential errore'
+      this.authService.addUser(this.user).subscribe({
+        complete:() => {this.feedback ='Registration complete.'; this.isLogin = true},
+        error: () => this.feedback = 'User already exists'
       });
+    } else {
+      this.authService.login(this.user).subscribe({
+        complete:() => this.location.back(),
+        error: () => this.feedback = 'Credentials error'
+      });
+    }
+  }
   }
 
-
-}
 

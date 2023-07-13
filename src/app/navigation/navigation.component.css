@@ -1,0 +1,12 @@
+nav {
+  height: 50px;
+  width: 100%;
+  background-color: turquoise;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav a {
+
+  color: white;
+}

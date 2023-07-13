@@ -1,0 +1,10 @@
+<nav>
+
+  <a routerLink="/" mat-button>Home</a>
+  <a routerLink="/list-user" mat-button *ngIf="auth.logged?.role == 'ROLE_ADMIN'">List Users</a>
+
+  <a *ngIf="auth.logged" mat-button (click)="auth.logout()">Logout</a>
+  <a *ngIf="!auth.logged" routerLink="/register" mat-button>Register/Login</a>
+
+
+</nav>
